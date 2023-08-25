@@ -5,7 +5,7 @@ enum game{rock, paper, scisors};
 
 namespace player1{
 	char selection1;
-	void playerOne();
+	void playerOne(int win, int draw, int loss);
 
 };
 
@@ -28,13 +28,13 @@ int main()
 	std::cin >> player2::selection2;
 	std::cout << "\n";
 
-	player1::playerOne();
+	player1::playerOne(0, 0, 0);
 	player2::playerTwo();
 
 	return 0;
 };
 
-void player1::playerOne(){
+void player1::playerOne(int win, int draw, int loss){
 	game play1;
 	play1 = rock;
 
@@ -44,6 +44,10 @@ void player1::playerOne(){
 	game play3;
 	play3 = scisors;
 
+	int winGame = 0;
+	int drawGame = 0;
+	int lossGame = 0;
+
 	int count = 0;
 	do
 	{
@@ -51,43 +55,64 @@ void player1::playerOne(){
 		switch (player1::selection1)
 		{
 		case 'R'|'r':
-			if(('R'|'r')){
-				std::cout << play1+1 << " " << "Rock wins\n";
-				std::cout << "Win chanses 50%\n";
+			
+			if(player1::selection1 = player2::selection2){
+				
+				if('R'|'r'){
+					std::cout << play1+1 << " " << "Rock wins\n";
+					std::cout << winGame++ << " Win" << "\n";
+					
+					break;
 
-				if('P'|'p'){
+					if('P'|'p'){
 					std::cout << play2+1 << " " << "Paper wins\n";
-					std::cout << "Win chanses 50%\n";
+					std::cout << lossGame++ << " Loss" << "\n";
+					
+					break;
 				};
+				};
+				
+				
 			};
 			break;
 		case 'P'|'p':
 
-			if('P'|'p'){
-				std::cout << play2+1 << " " << "Paper wins\n";
-				std::cout << "Win chanses 50%\n";
+			if(player1::selection1 = player2::selection2){
+				
+				if('P'|'p'){
+					std::cout << play2+1 << " " << "Paper wins\n";
+					std::cout << "Win chanses 50%\n";
+					break;
 
-				if('S'|'s'){
+					if('S'|'s'){
 					std::cout << play3+1 << " " << "Scisors wins\n";
 					std::cout << "Win chanses 50%\n";
+					break;
 				};
-			};
+				};
+			}
 			break;
 		case 'S'|'s':
 
-			if('S'|'s'){
-				std::cout << play3+1 << " " << "Scixors wins\n";
-				std::cout << "Win chanses 50%\n";
 
-				if('R'|'r'){
+			if(player1::selection1 = player2::selection2){
+				
+				if('S'|'s'){
+					std::cout << play3+1 << " " << "Scixors wins\n";
+					std::cout << "Win chanses 50%\n";
+					break;
+
+					if('R'|'r'){
 					std::cout << play1+1 << " " << "Rock wins\n";
 					std::cout << "Win chanses 50%\n";
+					break;
 				};
-			};
+				};
+			}
 			break;
 		
-		default:
-		std::cout << "Invalid input\n";
+			default:
+			std::cout << "Its a draw\n";
 			break;
 		}
 	} while (count < 3);
